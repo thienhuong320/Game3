@@ -1,0 +1,159 @@
+/* Cơ bản cho responsive design */
+body, html {
+    width: 100%;
+    height: 100%; /* Đảm bảo chiều cao phù hợp với viewport */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Ngăn chặn thanh cuộn ngang */
+    overflow-y: hidden; /* Ngăn chặn thanh cuộn dọc */
+}
+
+/* Định vị iframe ở góc phải phía trên */
+#audio-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 200px; /* Chiều rộng của iframe, bạn có thể thay đổi */
+    height: 100px; /* Chiều cao của iframe, bạn có thể thay đổi */
+    border: none; /* Bỏ viền cho iframe */
+}
+
+/* Đảm bảo các nút và liên kết dễ dàng nhấn */
+button, a {
+    min-width: 48px; /* Kích thước tối thiểu cho phép nhấn dễ dàng */
+    min-height: 48px;
+    padding: 10px;
+}
+
+ul li {
+    list-style-type: none;
+}
+img {
+    cursor: pointer;
+    width: 200px;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    /*align-items: center;*/
+}
+.trash1 {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    width: 100px;
+    height: 100px;
+    /*align-items: center;*/
+}
+
+.drop-zone {
+    position: absolute;
+    width: 118px;
+    height: 225px;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    background-image: url("game3/waste bin.png");
+}
+.drop-zone1 {
+    position: absolute;
+    bottom: 20px;
+    left: 150px;
+    width: 124px;
+    height: 225px;
+    display: flex;
+    background-image: url("game3/recycle bin.png");
+}
+.drop-zonel1 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    width: 111px;
+    height: 185px;
+    background-image: url("game3/waste1.png");
+}
+.drop-zonel2 {
+    position: absolute;
+    bottom: 20px;
+    left: 150px; 
+    display: flex;
+    width: 110px;
+    height: 175px;
+    background-image: url("game3/recycle1.png");
+}
+.drop-zone2 {
+    position: absolute;
+    bottom: 20px;
+    left: 300px; 
+    display: flex;
+    width: 109px;
+    height: 173px;
+    background-image: url("game3/organic1.png");
+}
+
+
+#startBtn:hover {
+    border: buttonhighlight;
+    background: orange;
+    box-shadow: 0px 0px 1px #777;
+}
+
+#startBtn {
+    background-color: #76643bbb;
+    padding: .5em;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 6px;
+    color: #fff;
+    font-family: 'Oswald';
+    font-size: 20px;
+    text-decoration: none;
+    border: none;
+}
+
+#startBtn:hover {
+    border: none;
+    background: orange;
+    box-shadow: 0px 0px 1px #777;
+}
+
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.drag-trash img {
+    position: absolute;
+    z-index: 1; /* Đảm bảo rác nằm dưới đá */
+}
+/* Responsive - điều chỉnh cho màn hình nhỏ */
+@media (max-width: 768px) {
+   
+    #audio-controls {
+        width: 150px; /* Chiều rộng của iframe cho màn hình nhỏ */
+        height: 80px; /* Chiều cao của iframe cho màn hình nhỏ */
+    }
+}
+
+/* Responsive cho màn hình rất nhỏ (điện thoại) */
+@media (max-width: 480px) {
+    
+    #audio-controls {
+        width: 100px; /* Chiều rộng của iframe cho màn hình nhỏ hơn */
+        height: 60px; /* Chiều cao của iframe cho màn hình nhỏ hơn */
+    }
+}

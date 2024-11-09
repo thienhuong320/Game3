@@ -1,0 +1,184 @@
+<html>
+    <title>Thành Phố Sạch UEH</title>
+    <head>
+        <link href="sample.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+
+    <body background="game3/background game_ueh.png" style="background-size: 100%; background-repeat: no-repeat; z-index: -1;">
+        <form>
+            <div class="container" >
+                <div id="counter">Đã chơi: 0s</div>
+                <label style="font: bold;font-size: xx-large">Điểm: </label>
+                <label id="Score" style="font: bold;font-size: xx-large;">0</label>
+                <section>
+                    <input type="hidden" id="flag" name="flag" value="false">
+                    <input type="button" id="startBtn" name="startBtn" style="margin-left: 20px; margin-top: 5px" 
+                           value="Bắt đầu" onclick="countdown('level3');">
+                    <label id="counter" style="margin-left: 30px; margin-top: 10px"></label>
+                </section>
+                <section class="drop-zonel1"  id="recycle" style="z-index:1" data-dustbinType ="recycle">
+                    <input type="hidden" id="hdnDustbin" name="hdnDustbin" value="hdnDustbin">
+                </section>
+                <section class="drop-zonel2" id="recycle" style="z-index:1" data-dustbinType="recycle" >
+                    <input type="hidden" id="hdnDustbin1" name="hdnDustbin1" value="hdnDustbin1">
+                </section>
+                <section class="drop-zone2" id="organic" style="z-index:1" data-dustbinType="organic" >
+                    <input type="hidden" id="hdnDustbin1" name="hdnDustbin1" value="hdnDustbin1">
+                </section>
+               
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 470px; padding-left: -30px;">
+                            <img id="apple1" data-garbageType="organic" alt="can"
+                                 src="game3/Apple.png" style="height: 40px; width: 40px"/>
+                        </li>
+                    </ul>
+                </section>
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 500px; padding-left: 0px;">
+                            <img id="can" alt="can" src="game3/can.png" onclick="showDetails(this)"
+                                 style="height: 60px; width: 60px" data-garbageType="recycle"/>
+                        </li>
+                    </ul>
+                </section>
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 510px; padding-left: 40px">
+                            <img id="appleee" data-garbageType="organic" alt="fishBone" 
+                                 src="game3/appleee.png" style="height: 75px; width: 150px">
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 370px; padding-left: 0px">
+                            <img id="bottle1" data-garbageType="organic" alt="egg"
+                                 src="game3/egg.png" style="height: 130px; width: 130px"/>
+                        </li>
+                    </ul>
+                </section>
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 530px; padding-left: 0px">
+                            <img id="bottle1" data-garbageType="recycle" alt="egg"
+                                 src="game3/shirt.png" style="height: 49px; width: 40px"/>
+                        </li>
+                    </ul>
+                </section>
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 500px; padding-left: 0px;">
+                            <img id="mug" alt="mug" src="game3/mug new.png"
+                                 style="height: 40px; width: 50px" data-garbageType="recycle"/>
+                        </li>
+                    </ul>
+                </section>
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 500px; padding-left: 10px;">
+                            <img id="mirror" alt="mirror" src="game3/mirror.png" onclick="showDetails(this)"
+                                 style="height: 40px; width: 35px" data-garbageType="recycle"/>
+                        </li>
+                    </ul>
+                </section>
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 470px; padding-left: 0px;">
+                            <img id="fish" alt="fish" src="game3/fish.png" 
+                                 style="height: 40px; width: 40px" data-garbageType="organic"/>
+                        </li>
+                    </ul>
+                </section>
+                <!-- <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 470px; padding-left: 0px;">
+                            <img id="rock" alt="rock" src="cucda.jpg" 
+                                 style="height: 40px; width: 40px" data-garbageType="recycle"/>
+                        </li>
+                    </ul>
+                </section> -->
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 530px; padding-left: 0px;">
+                            <img id="plate1" alt="plate1" src="game3/plastic bottle.png"
+                                 style="height: 40px; width: 50px" data-garbageType="recycle"/>
+                        </li>
+                    </ul>
+                </section>
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 530px; padding-left: 10px;">
+                            <img id="iron" alt="iron" src="game3/iron.png"
+                                 style="height: 40px; width: 44px" data-garbageType="recycle"/>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 430px; padding-left:0px" >
+                            <img id="bottle" alt="bottle" data-garbageType="recycle" 
+                                 src="game3/plastic bottle.png" style="height: 50px; width: 50px"/>
+                        </li>
+                    </ul>
+                </section>
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 450px; padding-left: 0px">
+                            <img id="foodCan" data-garbageType="recycle" alt="foodCan" 
+                                 src="game3/foodCan.png" style="height: 50px; width: 40px">
+                        </li>
+                    </ul>
+                </section>
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px">
+                        <li style="padding-top: 510px; padding-left: 10px">
+                            <img id="paper" alt="paper" src="game3/paper.png"  data-garbageType="recycle"
+                                 style="height: 40px; width: 40px">
+                        </li>
+                    </ul>
+                </section>
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 500px; padding-left: 15px;">
+                            <img id="phone" alt="can" src="game3/phone.png" onclick="showDetails(this)"
+                                 style="height: 60px; width: 40px" data-garbageType="recycle"/>
+                        </li>
+                    </ul>
+                </section>
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 490px; padding-left:  0px">
+                            <img id="egg1" data-garbageType="organic" alt="egg1" 
+                                 src="game3/egg1.png" style="height: 40px; width: 40px">
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="drag-trash" style="width: 0px; height: 0px;">
+                    <ul class="trash" style="width: 0px; height: 0px;">
+                        <li style="padding-top: 430px; padding-left:  -10px">
+                            <img id="banana" data-garbageType="organic" alt="banana" 
+                                 src="game3/banana.png" style="height: 40px; width: 40px">
+                        </li>
+                    </ul>
+                </section>
+
+
+                <section  >
+                    <img id="boy1" src="boy1.png" 
+                         style="height: 185px; width: 130px; margin-right:5px;margin-top: 400px;  "/>
+                </section>
+                <!--</div>-->
+            </div>
+        </form>
+    </body>
+
+    <!-- Nhúng iframe cho nhạc nền -->
+    <iframe id="audio-controls" src="audio.html" frameborder="0"></iframe>  
+    
+    <script type="text/javascript" src="game3.js"></script>
+</html>

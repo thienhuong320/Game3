@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chiến Thắng!</title>
+    <link href="sample.css" rel="stylesheet" type="text/css"/>
+</head>
+<body style="text-align: center; background-color: #f3f3f3;">
+    <div class="victory-container">
+        <img src="game3/winner.png" alt="Victory" style="width: 300px; height: auto; margin-top: 20px;">
+        <h1 style="font-size: 3em; color: gold;">High Score</h1>
+        <p style="font-size: 2em;">Tổng Điểm: <span id="finalScore">0</span></p>
+        <button onclick="restartGame()" style="font-size: 1.5em; padding: 10px 20px;">Chơi Lại</button>
+    </div>
+
+    <!-- Âm thanh chiến thắng -->
+    <audio id="victorySound" src="game3/winning.mp3" autoplay></audio>
+
+    <script>
+        // Display the final score from localStorage
+        document.getElementById("finalScore").textContent = localStorage.getItem("totalScore");
+
+        // Restart the game by clearing the score and redirecting to the main page
+        function restartGame() {
+            localStorage.removeItem("totalScore");
+            window.location.href = "trangchu.html"; // Redirect to the main page
+        }
+
+        // Play victory sound on load
+        window.onload = function() {
+            document.getElementById("victorySound").play();
+        }
+    </script>
+</body>
+</html>

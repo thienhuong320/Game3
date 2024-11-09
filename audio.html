@@ -1,0 +1,45 @@
+<!-- audio.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhạc Nền</title>
+    <style>
+        .audio-controls {
+            position: absolute;
+            top:  20px;
+            right: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .audio-controls img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            z-index: 2;
+        }
+            </style>
+</head>
+<body>
+    <!-- Nhạc nền -->
+    <audio id="background-music" src="game3/APT (mp3cut.net).mp3" loop autoplay></audio>
+    <!-- Âm thanh khi nhấn nút -->
+    <audio id="button-sound" src="game3/mouse-click.mp3"></audio>
+    <!-- Âm thanh khi thả rác đúng vào thùng -->
+     <audio id="correct-sound" src="game3/correct.mp3"></audio>
+    <!-- Âm thanh khi thả rác sai vào thùng -->
+     <audio id="uncorrect-sound" src="game3/wrong.mp3"></audio>
+
+    <!-- Icon điều khiển âm thanh -->
+    <div class="audio-controls">
+        <img src="game3/speaker.png" alt="Bật âm thanh nút" id="toggle-button-sound-on" onclick="toggleButtonSound()" title="Bật âm thanh nút">
+        <img src="game3/mute.png" alt="Tắt âm thanh nút" id="toggle-button-sound-off" onclick="toggleButtonSound()" title="Tắt âm thanh nút" style="display:none;">
+        <img src="game3/mutenhacnen-Photoroom.png" alt="Tắt nhạc nền" id="toggle-background-music-off" onclick="toggleBackgroundMusic()" title="Tắt nhạc nền">
+        <img src="game3/nhacnen-Photoroom.png" alt="Bật nhạc nền" id="toggle-background-music-on" onclick="toggleBackgroundMusic()" title="Bật nhạc nền" style="display:none;">
+    </div>
+
+     <script type="text/javascript" src="game3.js"></script>
+</body>
+</html>

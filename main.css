@@ -1,0 +1,125 @@
+/* Cấu hình chung */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    background: url('game3/background UEH_chibi2.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+h1 {
+    font-style: oblique;
+    font-weight: bold;
+    font-size: 80px;
+    text-align: center;
+    font-family: fantasy;
+    margin: 40px;
+    color: #000000;
+}
+
+h1 font {
+    color: green;
+}
+
+.rules {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.rules img {
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    background-color: #005f69;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: left;
+}
+
+.rules:hover .tooltip {
+    display: block;
+}
+
+#Button img#startButton {
+    width: 300px;
+    cursor: pointer;
+    transition: background-color 0.0s;
+}
+
+
+
+/* Responsive - điều chỉnh cho màn hình nhỏ */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 55px;
+    }
+
+    .rules img {
+        width: 200px;
+        height: 200px;
+    }
+
+    #Button img#startButton {
+        width: 200px;
+    }
+
+    .tooltip {
+        width: 250px;
+    }
+
+    #audio-controls {
+        width: 150px; /* Chiều rộng của iframe cho màn hình nhỏ */
+        height: 80px; /* Chiều cao của iframe cho màn hình nhỏ */
+    }
+}
+
+/* Responsive cho màn hình rất nhỏ (điện thoại) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+    .rules {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .rules img {
+        width: 100px;
+        height: 100px;
+    }
+
+    #Button img#startButton {
+        width: 150px;
+    }
+
+    .tooltip {
+        width: 200px;
+        font-size: 0.9em;
+    }
+
+    #audio-controls {
+        width: 100px; /* Chiều rộng của iframe cho màn hình nhỏ hơn */
+        height: 60px; /* Chiều cao của iframe cho màn hình nhỏ hơn */
+    }
+}
