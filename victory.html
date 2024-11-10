@@ -2,13 +2,22 @@
 <html>
 <head>
     <title>Chiến Thắng!</title>
+    <!-- Liên kết với tệp CSS để áp dụng định dạng -->
     <link href="sample.css" rel="stylesheet" type="text/css"/>
 </head>
-<body style="text-align: center; background-color: #f3f3f3;">
+<body  style="text-align: center;  background: url('game3/background UEH_chibi2.png'); background-repeat: no-repeat; background-size: 100% 100%">
+    <!-- Container chính cho nội dung chiến thắng -->
     <div class="victory-container">
+        <!-- Hình ảnh chiến thắng -->
         <img src="game3/winner.png" alt="Victory" style="width: 300px; height: auto; margin-top: 20px;">
+        
+        <!-- Tiêu đề "High Score" nổi bật -->
         <h1 style="font-size: 3em; color: gold;">High Score</h1>
+        
+        <!-- Hiển thị tổng điểm của người chơi -->
         <p style="font-size: 2em;">Tổng Điểm: <span id="finalScore">0</span></p>
+        
+        <!-- Nút "Chơi Lại" để người dùng có thể chơi lại -->
         <button onclick="restartGame()" style="font-size: 1.5em; padding: 10px 20px;">Chơi Lại</button>
     </div>
 
@@ -16,16 +25,16 @@
     <audio id="victorySound" src="game3/winning.mp3" autoplay></audio>
 
     <script>
-        // Display the final score from localStorage
+        // Hiển thị tổng điểm cuối cùng từ localStorage
         document.getElementById("finalScore").textContent = localStorage.getItem("totalScore");
 
-        // Restart the game by clearing the score and redirecting to the main page
+        // Hàm khởi động lại trò chơi
         function restartGame() {
-            localStorage.removeItem("totalScore");
-            window.location.href = "index.html"; // Redirect to the main page
+            localStorage.removeItem("totalScore"); // Xóa tổng điểm khỏi localStorage
+            window.location.href = "index.html"; // Chuyển hướng về trang chủ
         }
 
-        // Play victory sound on load
+        // Tự động phát âm thanh chiến thắng khi trang được tải
         window.onload = function() {
             document.getElementById("victorySound").play();
         }

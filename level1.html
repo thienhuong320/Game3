@@ -2,87 +2,88 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Thành Phố Sạch UEH</title> <!-- Đặt tiêu đề trang là "Thành Phố Sạch UEH" -->
-    <link href="sample.css" rel="stylesheet" type="text/css"> <!-- Liên kết đến file CSS để định dạng trang -->
+    <title>Thành Phố Sạch UEH</title> <!-- Đặt tiêu đề của trang web -->
+    <link href="sample.css" rel="stylesheet" type="text/css"> <!-- Liên kết đến file CSS để định dạng giao diện -->
 </head>
 <body background="game3/background game 2.png" style="background-size: 100% 100%; background-repeat: no-repeat; z-index: -1;">
-    <!-- Thiết lập nền trang từ ảnh, phủ kín và đẩy xuống dưới cùng với z-index = -1 -->
+    <!-- Thiết lập nền trang web bằng ảnh, phủ kín toàn bộ màn hình và đặt ảnh nền ở dưới cùng với z-index = -1 -->
+    
     <form>
-        <div class="container"> <!-- Khung chứa toàn bộ nội dung trang -->
-            <div id="counter">Đã chơi: 0s</div> <!-- Hiển thị thời gian chơi, bắt đầu từ 0 giây -->
-            <label style="font: bold;font-size: xx-large; width: 30px; height: 0px;">Điểm: </label> <!-- Nhãn "Điểm:" -->
-            <label id="Score" style="font: bold;font-size: xx-large;">0</label> <!-- Hiển thị điểm hiện tại, bắt đầu từ 0 -->
-
+        <div class="container"> <!-- Khung chứa tất cả các phần tử trong trang -->
+            
+            <!-- Hiển thị thời gian chơi -->
+            <div id="counter">Đã chơi: 0s</div> <!-- Hiển thị số giây đã chơi -->
+            
+            <!-- Hiển thị điểm số -->
+            <label style="font: bold;font-size: xx-large; width: 30px; height: 0px;">Điểm: </label> <!-- Nhãn hiển thị chữ "Điểm" -->
+            <label id="Score" style="font: bold;font-size: xx-large;">0</label> <!-- Hiển thị điểm hiện tại, mặc định là 0 -->
+            
             <section style="width: 0px; height: 0px;">
                 <!-- Khu vực chứa nút bắt đầu và các trường ẩn -->
-                <input type="hidden" id="flag" name="flag" value="false"> <!-- Trường ẩn để lưu cờ trạng thái -->
+                <input type="hidden" id="flag" name="flag" value="false"> <!-- Trường ẩn dùng để lưu trạng thái của trò chơi -->
                 <input type="button" id="startBtn" name="startBtn" style="margin-left: 20px; margin-top: 5px" 
-                       value="Bắt đầu" onclick="countdown('level1');"> <!-- Nút bắt đầu trò chơi, kích hoạt hàm countdown -->
-                <label id="counter" style="margin-left: 30px; margin-top: 10px"></label> <!-- Nhãn để hiển thị đếm ngược -->
+                       value="Bắt đầu" onclick="countdown('level1');"> <!-- Nút "Bắt đầu" để bắt đầu trò chơi -->
+                <label id="counter" style="margin-left: 30px; margin-top: 10px"></label> <!-- Nhãn để hiển thị thời gian đếm ngược -->
             </section>
 
-            <!-- Vùng rác và kéo thả -->
+            <!-- Vùng chứa các mục rác có thể kéo -->
             <section class="drag-trash" style="width: 0px; height: 0px;">
-                <!-- Tạo danh sách các mục rác có thể kéo -->
                 <ul class="trash" style="width: 0px; height: 0px;">
-                    <li style="padding-top: 510px; padding-left: -50px">
-                        <img id="fishBone" data-garbageType="recycle" alt="fishBone" 
+                    <li style="padding-top: 510px; padding-left: 0px">
+                        <img id="fishBone" class="falling" data-garbageType="recycle" alt="fishBone" 
                              src="game3/fishBone.png" style="height: 75px; width: 70px">
-                        <!-- Ảnh xương cá có thể kéo, nằm ở vị trí padding-top và padding-left xác định -->
+                        <!-- Mục rác hình ảnh xương cá có thể kéo, được xác định loại rác là "recycle" -->
                     </li>
                 </ul>
             </section>
 
-            <!-- Vùng đổ rác (vùng thả) -->
+            <!-- Vùng thùng rác tái chế -->
             <section class="drop-zone" id="recycle" style="z-index:1" data-dustbinType="recycle">
-                
-
-                <!-- Vùng để thả các mục có thể tái chế -->
+                <!-- Đây là khu vực để thả các mục có thể tái chế -->
                 <input type="hidden" id="hdnDustbin" name="hdnDustbin" value="hdnDustbin">
-                <!-- Trường ẩn để lưu thông tin về thùng rác -->
+                <!-- Trường ẩn lưu thông tin về thùng rác -->
             </section>
 
-            <!-- Các mục rác khác được liệt kê tương tự -->
+            <!-- Các mục rác khác -->
             <section class="drag-trash" style="width: 0px; height: 0px;">
                 <ul class="trash" style="width: 0px; height: 0px;">
-                    <li style="padding-top: 470px; padding-left: -10px;">
-                        <img id="apple1" data-garbageType="recycle" alt="can"
+                    <li style="padding-top: 300px; padding-left: -10px;">
+                        <img id="apple1" class="falling" data-garbageType="recycle" alt="apple1"
                              src="game3/Apple.png" style="height: 40px; width: 40px"/>
                         <!-- Ảnh quả táo có thể kéo với thuộc tính data-garbageType để xác định loại rác -->
                     </li>
                 </ul>
             </section>
 
-            <!-- Các mục rác khác với hình ảnh và vị trí khác nhau -->
-            <!-- Các phần này đều bao gồm ảnh và thuộc tính data-garbageType -->
+            <!-- Các mục rác bổ sung với các hình ảnh khác nhau -->
             <section class="drag-trash" style="width: 0px; height: 0px;">
                 <ul class="trash" style="width: 0px; height: 0px;">
                     <li style="padding-top: 500px; padding-left: 0px;">
-                        <img id="can" alt="can" src="game3/can.png" onclick="showDetails(this)"
+                        <img id="can" class="falling" alt="can" src="game3/can.png" onclick="showDetails(this)"
                              style="height: 60px; width: 60px" data-garbageType="recycle"/>
-                        <!-- Ảnh hộp thiếc có chức năng showDetails khi nhấp chuột -->
+                        <!-- Hình ảnh hộp thiếc, có thể nhấp để xem chi tiết -->
                     </li>
                 </ul>
             </section>
 
-            <!-- Các phần tử rác bổ sung tương tự như trên -->
+            <!-- Các mục rác khác với hình ảnh và vị trí khác nhau -->
             <section class="drag-trash" style="width: 0px; height: 0px;">
                 <ul class="trash" style="width: 0px; height: 0px;">
                     <li style="padding-top: 500px; padding-left: 0px;">
-                        <img id="can" alt="can" src="game3/mirror.png" onclick="showDetails(this)"
+                        <img id="mirror" class="falling" alt="mirror" src="game3/mirror.png" onclick="showDetails(this)"
                              style="height: 40px; width: 35px" data-garbageType="recycle"/>
-                        <!-- Ảnh gương có thể kéo và nhấp để hiện chi tiết -->
+                        <!-- Hình ảnh chiếc gương có thể kéo và nhấp để xem chi tiết -->
                     </li>
                 </ul>
             </section>
 
-            <!-- Các hình ảnh khác của rác như cá, đĩa, chai nhựa, giấy, chuối, táo, điện thoại, v.v. -->
+            <!-- Các mục rác bổ sung như táo, cá, đĩa, chai nhựa, giấy, chuối, v.v. -->
             <section class="drag-trash" style="width: 0px; height: 0px;">
                 <ul class="trash" style="width: 0px; height: 0px;">
-                    <li style="padding-top: 500px; padding-right: 100px">
-                        <img id="appleee" data-garbageType="recycle" alt="fishBone" 
+                    <li style="padding-top: 500px; padding-right: 500px">
+                        <img id="appleee" class="falling" data-garbageType="recycle" alt="appleee" 
                              src="game3/appleee.png" style="height: 75px; width: 150px">
-                        <!-- Ảnh appleee trong danh sách rác, thuộc tính data-garbageType để phân loại rác -->
+                        <!-- Hình ảnh táo, có thể kéo và thuộc loại rác tái chế -->
                     </li>
                 </ul>
             </section>
@@ -90,9 +91,10 @@
         </div>
     </form>
     
-    <!-- Nhúng iframe cho nhạc nền -->
+    <!-- Nhúng iframe để hiển thị và điều khiển nhạc nền -->
     <iframe id="audio-controls" src="audio.html" frameborder="0"></iframe>    
     
-    <script type="text/javascript" src="game3.js"></script> <!-- Liên kết file JavaScript để xử lý logic trò chơi -->
+    <!-- Liên kết đến file JavaScript xử lý logic trò chơi -->
+    <script type="text/javascript" src="game3.js"></script>
 </body>
 </html>

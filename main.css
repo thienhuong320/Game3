@@ -1,125 +1,130 @@
-/* Cấu hình chung */
+/* Cấu hình chung cho giao diện */
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    position: relative;
-    background: url('game3/background UEH_chibi2.png');
-    background-size: cover;
-    background-position: center;
-    color: white;
+    display: flex; /* Hiển thị các phần tử trong body theo dạng khối dọc */
+    flex-direction: column; /* Căn chỉnh các phần tử theo hướng dọc */
+    align-items: center; /* Căn giữa các phần tử theo chiều ngang */
+    height: 100vh; /* Chiều cao của body bằng chiều cao của màn hình */
+    margin: 0; /* Loại bỏ khoảng cách xung quanh body */
+    font-family: Arial, sans-serif; /* Đặt phông chữ mặc định cho trang */
+    position: relative; /* Thiết lập vị trí tương đối để có thể định vị các phần tử khác */
+    background: url('game3/background UEH_chibi2.png'); /* Đặt hình nền cho trang */
+    background-size: cover; /* Hình nền phủ kín màn hình */
+    background-position: center; /* Căn giữa hình nền */
+    color: white; /* Màu chữ mặc định là trắng */
 }
 
+/* Định dạng cho tiêu đề chính */
 h1 {
-    font-style: oblique;
-    font-weight: bold;
-    font-size: 80px;
-    text-align: center;
-    font-family: fantasy;
-    margin: 40px;
-    color: #000000;
+    font-style: oblique; /* Đặt kiểu chữ nghiêng */
+    font-weight: bold; /* Đặt độ dày của chữ đậm */
+    font-size: 80px; /* Kích thước chữ lớn */
+    text-align: center; /* Căn giữa văn bản */
+    font-family: fantasy; /* Đặt phông chữ kiểu fantasy cho tiêu đề */
+    margin: 40px; /* Khoảng cách xung quanh tiêu đề */
+    color: #000000; /* Màu đen cho tiêu đề */
 }
 
+/* Định dạng màu xanh lá cây cho chữ bên trong thẻ h1 */
 h1 font {
     color: green;
 }
 
+/* Định dạng cho biểu tượng quy tắc trò chơi */
 .rules {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+    position: fixed; /* Định vị cố định ở góc màn hình */
+    bottom: 20px; /* Cách đáy 20px */
+    right: 20px; /* Cách phải 20px */
 }
 
+/* Định dạng cho hình ảnh quy tắc */
 .rules img {
-    width: 300px;
-    height: 300px;
-    cursor: pointer;
+    width: 300px; /* Chiều rộng của hình ảnh quy tắc */
+    height: 300px; /* Chiều cao của hình ảnh quy tắc */
+    cursor: pointer; /* Đổi con trỏ thành tay khi hover */
 }
 
+/* Định dạng cho hộp tooltip */
 .tooltip {
-    display: none;
-    position: absolute;
-    bottom: 60px;
-    right: 0;
-    background-color: #005f69;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    width: 300px;
-    text-align: left;
+    display: none; /* Ẩn tooltip theo mặc định */
+    position: absolute; /* Định vị tuyệt đối để căn chỉnh so với thẻ cha */
+    bottom: 60px; /* Cách đáy của thẻ cha 60px */
+    right: 0; /* Căn phải */
+    background-color: #005f69; /* Màu nền xanh đậm */
+    color: white; /* Màu chữ trắng */
+    padding: 10px; /* Khoảng cách bên trong hộp */
+    border-radius: 5px; /* Bo góc hộp */
+    width: 300px; /* Chiều rộng của tooltip */
+    text-align: left; /* Căn lề trái cho văn bản */
 }
 
+/* Hiển thị tooltip khi hover vào biểu tượng quy tắc */
 .rules:hover .tooltip {
-    display: block;
+    display: block; /* Hiển thị tooltip */
 }
 
+/* Định dạng cho nút bắt đầu */
 #Button img#startButton {
-    width: 300px;
-    cursor: pointer;
-    transition: background-color 0.0s;
+    width: 300px; /* Chiều rộng của nút */
+    cursor: pointer; /* Đổi con trỏ thành tay khi hover */
+    transition: background-color 0.0s; /* Hiệu ứng chuyển màu nền (nếu có) */
 }
 
-
-
-/* Responsive - điều chỉnh cho màn hình nhỏ */
+/* Điều chỉnh giao diện cho màn hình có chiều rộng tối đa 768px (thiết bị nhỏ) */
 @media (max-width: 768px) {
     h1 {
-        font-size: 55px;
+        font-size: 55px; /* Giảm kích thước chữ của tiêu đề */
     }
 
     .rules img {
-        width: 200px;
-        height: 200px;
+        width: 200px; /* Giảm kích thước hình ảnh quy tắc */
+        height: 200px; /* Giảm chiều cao hình ảnh quy tắc */
     }
 
     #Button img#startButton {
-        width: 200px;
+        width: 200px; /* Giảm kích thước nút bắt đầu */
     }
 
     .tooltip {
-        width: 250px;
+        width: 250px; /* Giảm chiều rộng của tooltip */
     }
 
     #audio-controls {
-        width: 150px; /* Chiều rộng của iframe cho màn hình nhỏ */
-        height: 80px; /* Chiều cao của iframe cho màn hình nhỏ */
+        width: 150px; /* Chiều rộng iframe trên thiết bị nhỏ */
+        height: 80px; /* Chiều cao iframe trên thiết bị nhỏ */
     }
 }
 
-/* Responsive cho màn hình rất nhỏ (điện thoại) */
+/* Điều chỉnh giao diện cho màn hình rất nhỏ, tối đa 480px (điện thoại) */
 @media (max-width: 480px) {
     body {
-        padding: 10px;
+        padding: 10px; /* Thêm khoảng đệm xung quanh body */
     }
 
     h1 {
-        font-size: 35px;
+        font-size: 35px; /* Giảm kích thước tiêu đề */
     }
 
     .rules {
-        bottom: 15px;
-        right: 15px;
+        bottom: 15px; /* Giảm khoảng cách cách đáy */
+        right: 15px; /* Giảm khoảng cách cách phải */
     }
 
     .rules img {
-        width: 100px;
-        height: 100px;
+        width: 100px; /* Giảm kích thước hình ảnh quy tắc */
+        height: 100px; /* Giảm chiều cao hình ảnh quy tắc */
     }
 
     #Button img#startButton {
-        width: 150px;
+        width: 150px; /* Giảm kích thước nút bắt đầu */
     }
 
     .tooltip {
-        width: 200px;
-        font-size: 0.9em;
+        width: 200px; /* Giảm chiều rộng của tooltip */
+        font-size: 0.9em; /* Giảm kích thước chữ trong tooltip */
     }
 
     #audio-controls {
-        width: 100px; /* Chiều rộng của iframe cho màn hình nhỏ hơn */
-        height: 60px; /* Chiều cao của iframe cho màn hình nhỏ hơn */
+        width: 100px; /* Chiều rộng iframe trên màn hình rất nhỏ */
+        height: 60px; /* Chiều cao iframe trên màn hình rất nhỏ */
     }
 }

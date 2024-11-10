@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Chủ</title>
-    <link rel="stylesheet" href="sample.css"> <!-- CSS chung cho game -->
-    <link rel="stylesheet" href="main.css"> <!-- CSS cho trang chủ -->
+    <meta charset="UTF-8"> <!-- Thiết lập mã hóa ký tự cho trang -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Đảm bảo trang tương thích với các thiết bị di động -->
+    <title>Trang Chủ</title> <!-- Tiêu đề của trang -->
+    <link rel="stylesheet" href="sample.css"> <!-- Đường dẫn đến CSS chung cho game -->
+    <link rel="stylesheet" href="main.css"> <!-- Đường dẫn đến CSS riêng cho trang chủ -->
 </head>
 <body>
     
+    <!-- Tiêu đề của game với hai phần màu sắc khác nhau -->
     <h1><font> Green</font> UEH<br> Clean UEH </h1>
 
+    <!-- Biểu tượng quy tắc với tooltip chứa nội dung luật chơi -->
     <div class="rules">
-        <img src="game3/UEH.png" alt="Icon Quy Tắc">
+        <img src="game3/UEH.png" alt="Icon Quy Tắc"> <!-- Hình ảnh biểu tượng quy tắc -->
         <div class="tooltip">
+            <!-- Nội dung tooltip hiện ra khi hover vào biểu tượng quy tắc -->
             <ul>
                 <li><strong>Luật chơi:</strong> Dùng chuột để kéo và thả rác vào thùng đúng cách. Mỗi mảnh rác bỏ vào đúng thùng bạn sẽ nhận được 1 điểm.</li>
-                <li><strong>Thời gian:</strong> Hoàn thành trò chơi trong khoảng thời gian quy định để nhận thêm điểm thưởng:</li>
-                <ul>
-                    <li>Hoàn thành trước 30 giây sẽ được cộng 10 điểm thưởng.</li>
-                    <li>Hoàn thành trước 1 phút sẽ được cộng 5 điểm thưởng.</li>
-                </ul>
+                <li><strong>Thời gian:</strong> Hoàn thành trò chơi trong khoảng thời gian quy định để nhận thêm điểm thưởng:
+                    <ul>
+                        <li>Hoàn thành trước 30 giây sẽ được cộng 10 điểm thưởng.</li>
+                        <li>Hoàn thành trước 1 phút sẽ được cộng 5 điểm thưởng.</li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>    
 
+    <!-- Nút bắt đầu trò chơi -->
     <div id="Button">
-        <img id="startButton" src="game3/ZS3t.gif" alt="Nút bắt đầu" onclick="startbutton();">
+        <img id="startButton" src="game3/ZS3t.gif" alt="Nút bắt đầu" onclick="startbutton();"> <!-- Hình ảnh nút bắt đầu, khi nhấn sẽ kích hoạt hàm startbutton() -->
     </div>
 
-    <!-- Nhúng iframe cho nhạc nền -->
+    <!-- Nhúng iframe cho nhạc nền của game -->
     <iframe id="audio-controls" src="audio.html" frameborder="0"></iframe>
     
-    <script src="game3.js"></script>
+    <script src="game3.js"></script> <!-- Nhúng file JavaScript cho các chức năng của game -->
 </body>
 </html>
