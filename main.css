@@ -62,6 +62,21 @@ h1 font {
     transition: background-color 0.0s;
 }
 
+/* Kiểu dáng cho nút */
+.link-btn {
+    background-color: #4CAF50;  /* Màu nền xanh */
+    color: white;  /* Màu chữ trắng */
+    border: none;  /* Xóa viền */
+    border-radius: 12px;  /* Bo góc */
+    padding: 15px 32px;  /* Khoảng cách trong nút */
+    font-size: 16px;  /* Kích thước chữ */
+    cursor: pointer;  /* Con trỏ thay đổi khi hover */
+    transition: background-color 0.3s ease;  /* Hiệu ứng chuyển màu nền khi hover */
+}
+
+.link-btn:hover {
+    background-color: #45a049;  /* Màu nền khi hover */
+}
 
 
 /* Responsive - điều chỉnh cho màn hình nhỏ */

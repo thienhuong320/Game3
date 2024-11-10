@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,41 @@
     <link rel="stylesheet" href="sample.css"> <!-- CSS chung cho game -->
     <link rel="stylesheet" href="main.css"> <!-- CSS cho trang chủ -->
 </head>
+
 <body>
-    
-    <h1><font> Green</font> UEH<br> Clean UEH </h1>
+
+    <h1>
+        <font> Green</font> UEH<br> Clean UEH
+    </h1>
 
     <div class="rules">
         <img src="game3/UEH.png" alt="Icon Quy Tắc">
         <div class="tooltip">
             <ul>
-                <li><strong>Luật chơi:</strong> Dùng chuột để kéo và thả rác vào thùng đúng cách. Mỗi mảnh rác bỏ vào đúng thùng bạn sẽ nhận được 1 điểm.</li>
-                <li><strong>Thời gian:</strong> Hoàn thành trò chơi trong khoảng thời gian quy định để nhận thêm điểm thưởng:</li>
+                <li><strong>Luật chơi:</strong> Dùng chuột để kéo và thả rác vào thùng đúng cách. Mỗi mảnh rác bỏ vào
+                    đúng thùng bạn sẽ nhận được 1 điểm.</li>
+                <li><strong>Thời gian:</strong> Hoàn thành trò chơi trong khoảng thời gian quy định để nhận thêm điểm
+                    thưởng:</li>
                 <ul>
                     <li>Hoàn thành trước 30 giây sẽ được cộng 10 điểm thưởng.</li>
                     <li>Hoàn thành trước 1 phút sẽ được cộng 5 điểm thưởng.</li>
                 </ul>
             </ul>
         </div>
-    </div>    
+    </div>
 
     <div id="Button">
         <img id="startButton" src="game3/ZS3t.gif" alt="Nút bắt đầu" onclick="startbutton();">
     </div>
-
+    <!-- Thêm nút liên kết tới trang web -->
+    <div id="linkButton">
+        <button class="link-btn" onclick="window.location.href='https://front-end-web5.vercel.app/';">Truy cập trang
+            web</button>
+    </div>
     <!-- Nhúng iframe cho nhạc nền -->
     <iframe id="audio-controls" src="audio.html" frameborder="0"></iframe>
-    
+
     <script src="game3.js"></script>
 </body>
+
 </html>
