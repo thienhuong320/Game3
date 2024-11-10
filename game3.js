@@ -1,5 +1,8 @@
+// Biến lưu trạng thái bật/tắt âm thanh của nút và nhạc nền
 let isButtonSoundOn = true; // Biến lưu trạng thái bật/tắt âm thanh của nút
 let isBackgroundMusicOn = true; // Biến lưu trạng thái bật/tắt nhạc nền
+
+// Các đối tượng âm thanh từ file audio
 const bgMusic = document.getElementById("background-music"); // Đối tượng nhạc nền
 const buttonSound = document.getElementById("button-sound"); // Đối tượng âm thanh của nút
 const correctSound = document.getElementById("correct-sound"); // Đối tượng âm thanh cho câu trả lời đúng
@@ -7,23 +10,30 @@ const incorrectSound = document.getElementById("incorrect-sound"); // Đối tư
 
 // Khi trang tải xong, thiết lập và phát nhạc nền
 window.onload = function () {
-    bgMusic.volume = 0.5; // Đặt âm lượng nhạc nền (0.5 là mức trung bình)
-    bgMusic.play(); // Phát nhạc nền ngay khi trang tải
+    bgMusic.volume = 0.5;
+    bgMusic.play();
 };
 
+// Hàm xử lý sự kiện khi nhấn nút "Start"
 function startbutton() {
-    if (isButtonSoundOn) {
-        buttonSound.currentTime = 0; // Đặt lại âm thanh nút về đầu
-        buttonSound.play(); // Phát âm thanh của nút
+   
+    // Đặt điểm và thời gian ban đầu khi vào level 1
+    if (window.location.href.includes("level1")) {
+        localStorage.setItem("score", "0");
+        localStorage.setItem("elapsedTime", "0");
     }
-    window.location.href = "level1.html"; // Chuyển sang trang level1.html
+
+    setTimeout(() => {
+        window.location.href = "level1.html";
+    }, 300);
 }
 
+// Hàm bật/tắt âm thanh của nút
 function toggleButtonSound() {
-    isButtonSoundOn = !isButtonSoundOn; // Đổi trạng thái âm thanh nút
-    const buttonSoundOn = document.getElementById("toggle-button-sound-on"); // Biểu tượng bật âm thanh nút
-    const buttonSoundOff = document.getElementById("toggle-button-sound-off"); // Biểu tượng tắt âm thanh nút
-    
+    isButtonSoundOn = !isButtonSoundOn;
+    const buttonSoundOn = document.getElementById("toggle-button-sound-on");
+    const buttonSoundOff = document.getElementById("toggle-button-sound-off");
+
     buttonSoundOn.style.display = isButtonSoundOn ? "block" : "none";
     buttonSoundOff.style.display = isButtonSoundOn ? "none" : "block";
 
@@ -34,27 +44,29 @@ function toggleButtonSound() {
     }
 }
 
+// Hàm bật/tắt nhạc nền
 function toggleBackgroundMusic() {
-    isBackgroundMusicOn = !isBackgroundMusicOn; // Đổi trạng thái nhạc nền
+    isBackgroundMusicOn = !isBackgroundMusicOn;
     if (isBackgroundMusicOn) {
-        bgMusic.play(); // Phát nhạc nếu bật
+        bgMusic.play();
     } else {
-        bgMusic.pause(); // Dừng nhạc nếu tắt
+        bgMusic.pause();
     }
-    const backgroundMusicOn = document.getElementById("toggle-background-music-on"); // Biểu tượng bật nhạc nền
-    const backgroundMusicOff = document.getElementById("toggle-background-music-off"); // Biểu tượng tắt nhạc nền
+    
+    const backgroundMusicOn = document.getElementById("toggle-background-music-on");
+    const backgroundMusicOff = document.getElementById("toggle-background-music-off");
+
     backgroundMusicOn.style.display = isBackgroundMusicOn ? "block" : "none";
     backgroundMusicOff.style.display = isBackgroundMusicOn ? "none" : "block";
 }
 
-let dragged; // Biến lưu mục rác đang được kéo
-let dropObject;
-var level1 = 7;
-var FinalLevel; // Biến lưu cấp độ cuối cùng
-var score = 0; // Biến lưu điểm
-var totalGarbageThing = 0; // Tổng số mục rác cần thu thập
-let startTime; // Thời gian bắt đầu trò chơi
+// Các biến lưu thông tin về trò chơi
+let dragged;
+let totalGarbageThing = 0;
+let score = 0;
+let startTime;
 
+// Các hàm xử lý sự kiện khi kéo và thả các mục rác
 function onDragOver(event) {
     event.preventDefault();
 }
@@ -76,7 +88,7 @@ function onDrop(event) {
     var scoreCnt = 0;
     var garbageType = dragged.getAttribute("data-garbageType");
     var dustbinType = target.getAttribute("data-dustbinType");
-    
+
     if (garbageType === dustbinType) {
         scoreCnt++;
     } else {
@@ -85,25 +97,26 @@ function onDrop(event) {
     score += scoreCnt;
 
     if (target && dragged) {
-        target.style.backgroundColor = ''; // Xóa màu nền vùng thả
+        target.style.backgroundColor = '';
         event.preventDefault();
-        dragged.parentNode.removeChild(dragged); // Xóa mục rác khỏi vị trí ban đầu
-        dragged.style.opacity = ''; // Đặt lại độ trong suốt của mục
-        totalGarbageThing--; // Giảm số lượng mục rác chưa thu thập
+        dragged.parentNode.removeChild(dragged);
+        dragged.style.opacity = '';
+        totalGarbageThing--;
     }
-    document.getElementById("Score").innerHTML = score; // Cập nhật điểm trên giao diện
 
-    checkAllTrashCollected(); // Gọi hàm kiểm tra sau khi thả rác
+    document.getElementById("Score").innerHTML = score;
+
+    checkAllTrashCollected();
 }
 
 function onDragStart(event) {
-    if (document.getElementById("flag").value == "true") { // Kiểm tra nếu trò chơi đã bắt đầu
+    if (document.getElementById("flag").value == "true") {
         let target = event.target;
         if (target && target.nodeName === 'IMG') {
-            dragged = target; // Lưu mục đang kéo
-            event.dataTransfer.setData('text', target.id); // Lưu ID mục rác
-            event.dataTransfer.dropEffect = 'move'; // Đặt hiệu ứng thả là 'move'
-            event.target.style.opacity = .3; // Giảm độ trong suốt
+            dragged = target;
+            event.dataTransfer.setData('text', target.id);
+            event.dataTransfer.dropEffect = 'move';
+            event.target.style.opacity = .3;
         }
     }
 }
@@ -111,7 +124,7 @@ function onDragStart(event) {
 function onDragEnd(event) {
     if (event.target && event.target.nodeName === 'IMG') {
         event.target.style.opacity = ''; 
-        dragged = null; // Đặt lại mục đang kéo
+        dragged = null;
     }
 }
 
@@ -130,74 +143,67 @@ dropZones.forEach(dropZone => {
     dropZone.addEventListener('dragover', onDragOver);
 });
 
-// Đếm ngược và thiết lập thời gian bắt đầu
+// Đếm ngược thời gian và bắt đầu trò chơi
 function countdown(level) {
-    FinalLevel = level;
-    document.getElementById("flag").value = "true"; // Đặt cờ để bắt đầu trò chơi
+    document.getElementById("flag").value = "true";
     document.getElementById("startBtn").disabled = true;
-    startTime = Date.now(); // Ghi nhận thời gian bắt đầu
+    startTime = Date.now();
 
     function updateCounter() {
         let elapsedTime = Math.floor((Date.now() - startTime) / 1000);
         document.getElementById('counter').innerHTML = "Đã chơi: " + elapsedTime + "s";
-
-        requestAnimationFrame(updateCounter); // Cập nhật bộ đếm liên tục
+        requestAnimationFrame(updateCounter);
     }
 
     requestAnimationFrame(updateCounter);
 }
 
-function saveGameState() {
-    localStorage.setItem('score', score.toString());
-    localStorage.setItem('level', FinalLevel);
-}
-
-function endGame() {
-    saveGameState();
-    alert("Trò chơi kết thúc! Điểm của bạn là: " + score);
-}
-
-function restoreGameState() {
-    const savedScore = localStorage.getItem('score');
-    const savedLevel = localStorage.getItem('level');
-    if (savedScore !== null) {
-        score = parseInt(savedScore, 10);
-        document.getElementById("Score").innerHTML = score;
-    }
-    if (savedLevel !== null) {
-        FinalLevel = savedLevel;
-    }
-}
-
-document.addEventListener('DOMContentLoaded', restoreGameState);
-
-// Kiểm tra nếu tất cả mục rác đã được thu thập
 function checkAllTrashCollected() {
     if (totalGarbageThing === 0) {
         let elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        let bonusPoints = 0;
 
         if (elapsedTime < 30) {
-            score += 10; // Bonus for finishing within 30 seconds
+            bonusPoints = 10;
         } else if (elapsedTime < 60) {
-            score += 5; // Bonus for finishing within 60 seconds
+            bonusPoints = 5;
         }
 
-        document.getElementById("Score").innerHTML = score;
+        score += bonusPoints; // Cộng điểm từ cấp độ hiện tại
 
-        // Accumulate and save total score in localStorage
+        // Lấy tổng điểm từ localStorage và cộng thêm điểm của cấp độ hiện tại
         let totalScore = parseInt(localStorage.getItem("totalScore")) || 0;
         totalScore += score;
-        localStorage.setItem("totalScore", totalScore);
 
-        // Determine the current level and navigate
+        // Lưu lại điểm và thời gian vào localStorage
+        localStorage.setItem("score", score);
+        localStorage.setItem("totalScore", totalScore); // Cập nhật điểm tổng cộng
+        localStorage.setItem("elapsedTime", elapsedTime);
+
+        alert(`Cấp độ hoàn thành!\nThời gian: ${elapsedTime} giây\nĐiểm thưởng: ${bonusPoints}\nTổng điểm hiện tại: ${totalScore}`);
+
         const currentLevel = parseInt(window.location.href.match(/level(\d+)\.html/)[1]);
-
+        
+        // Chuyển sang cấp độ tiếp theo hoặc trang chiến thắng nếu hoàn thành cấp độ cuối
         if (currentLevel === 3) {
-            window.location.href = "victory.html"; // Go to victory page after level 3
+            window.location.href = "victory.html";
         } else {
-            const nextLevel = currentLevel + 1;
-            window.location.href = `level${nextLevel}.html`; // Move to the next level
+            window.location.href = `level${currentLevel + 1}.html`;
         }
     }
 }
 
+
+// Cập nhật điểm và thời gian khi vào trang chiến thắng
+function displayVictoryInfo() {
+    const finalScore = localStorage.getItem("totalScore") || 0;
+    const finalTime = localStorage.getItem("elapsedTime") || 0;
+
+    document.getElementById("finalScore").textContent = finalScore;
+    document.getElementById("finalTime").textContent = finalTime;
+}
+
+// Gọi displayVictoryInfo khi trang chiến thắng được tải
+if (window.location.href.includes("victory")) {
+    window.onload = displayVictoryInfo;
+}

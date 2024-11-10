@@ -1,164 +1,134 @@
 <html>
-    <title>Thành Phố Sạch UEH</title>
+    <title>Thành Phố Sạch UEH</title> <!-- Tiêu đề trang web -->
     <head>
-        <link href="sample.css" rel="stylesheet" type="text/css"/>
-
+        <link href="sample.css" rel="stylesheet" type="text/css"/> <!-- Liên kết đến file CSS để định dạng trang -->
     </head>
     
     <body background="game3/background game 2.png" style="background-size: 100% 100%; background-repeat: no-repeat; z-index: -1;">
         <form>
             <div class="container" >
-                <div id="counter">Đã chơi: 0s</div>
-                <label style="font: bold;font-size: xx-large; width: 30px; height: 0px;">Điểm: </label>
-                <label id="Score" style="font: bold;font-size: xx-large;">0</label>
+                <!-- Hiển thị thời gian và điểm số -->
+                <div id="counter">Đã chơi: 0s</div> <!-- Hiển thị thời gian chơi -->
+                <label style="font: bold;font-size: xx-large; width: 30px; height: 0px;">Điểm: </label> <!-- Nhãn "Điểm:" -->
+                <label id="Score" style="font: bold;font-size: xx-large;">0</label> <!-- Hiển thị điểm hiện tại -->
+
+                <!-- Phần nút bắt đầu trò chơi và đếm ngược thời gian -->
                 <section style="width: 0px; height: 0px;">
-                    <input type="hidden" id="flag" name="flag" value="false">
+                    <input type="hidden" id="flag" name="flag" value="false"> <!-- Trường ẩn lưu trạng thái flag -->
                     <input type="button" id="startBtn" name="startBtn" style="margin-left: 20px; margin-top: 5px" 
-                           value="Bắt đầu" onclick="countdown('level2');">
-                    <label id="counter" style="margin-left: 30px; margin-top: 10px"></label>
+                           value="Bắt đầu" onclick="countdown('level2');"> <!-- Nút bắt đầu, gọi hàm countdown -->
+                    <label id="counter" style="margin-left: 30px; margin-top: 10px"></label> <!-- Hiển thị đếm ngược -->
                 </section>
 
+                <!-- Vùng đổ rác (thùng rác) -->
                 <section class="drop-zone"  id="waste" style="z-index:1" data-dustbinType ="waste">
-                    <input type="hidden" id="hdnDustbin" name="hdnDustbin" value="hdnDustbin">
+                    <input type="hidden" id="hdnDustbin" name="hdnDustbin" value="hdnDustbin"> <!-- Trường ẩn lưu thông tin về thùng rác waste -->
                 </section>
                 <section class="drop-zone1" id="recycle" style="z-index:1" data-dustbinType="recycle" >
-                    <input type="hidden" id="hdnDustbin1" name="hdnDustbin1" value="hdnDustbin1">
+                    <input type="hidden" id="hdnDustbin1" name="hdnDustbin1" value="hdnDustbin1"> <!-- Thùng rác để tái chế -->
                 </section>
-                
-                <section class="drag-trash" style="width: 0px; height: 0px;">
-                    <ul class="trash" style="width: 0px; height: 0px;">
-                        <li style="padding-top: 540px; padding-left: 5px;">
-                            <img id="plate1" alt="plate1" src="game3/mirror.png"
-                                 style="height: 40px; width: 50px" data-garbageType="waste"/>
-                        </li>
-                    </ul>
-                </section>
+
+               
+
+                <!-- Các mục rác khác với vị trí và hình ảnh khác nhau -->
                 <section class="drag-trash" style="width: 0px; height: 0px;">
                     <ul class="trash" style="width: 0px; height: 0px;">
                         <li style="padding-top: 470px; padding-left: -10px;">
-                            <img id="apple1" data-garbageType="waste" alt="can"
-                                 src="game3/Apple.png" style="height: 40px; width: 40px"/>
+                            <img id="apple1" class="falling" data-garbageType="waste" alt="can"
+                                 src="game3/Apple.png" style="height: 40px; width: 40px"/> <!-- Hình ảnh quả táo -->
                         </li>
                     </ul>
                 </section>
+
+                <!-- Các mục rác khác -->
                 <section class="drag-trash" style="width: 0px; height: 0px;">
                     <ul class="trash" style="width: 0px; height: 0px;">
                         <li style="padding-top: 500px; padding-left: 0px;">
-                            <img id="can" alt="can" src="game3/can.png" 
-                                 style="height: 60px; width: 60px" data-garbageType="recycle"/>
+                            <img id="can" class="falling" alt="can" src="game3/can.png" 
+                                 style="height: 60px; width: 60px " data-garbageType="recycle"/> <!-- Hình ảnh hộp thiếc -->
                         </li>
                     </ul>
                 </section>
+
+                <!-- Hình ảnh của các mục khác -->
                 <section class="drag-trash" style="width: 0px; height: 0px;">
                     <ul class="trash" style="width: 0px; height: 0px;">
                         <li style="padding-top: 510px; padding-left: 40px">
-                            <img id="appleee" data-garbageType="waste" alt="fishBone" 
-                                 src="game3/appleee.png" style="height: 75px; width: 150px">
+                            <img id="appleee" class="falling" data-garbageType="waste" alt="fishBone" 
+                                 src="game3/appleee.png" style="height: 75px; width: 150px"> <!-- Hình ảnh của appleee -->
                         </li>
                     </ul>
                 </section>
 
-                <section class="drag-trash" style="width: 0px; height: 0px;">
-                    <ul class="trash" style="width: 0px; height: 0px;">
-                        <li style="padding-top: 370px; padding-left: 0px">
-                            <img id="bottle1" data-garbageType="waste" alt="egg"
-                                 src="game3/egg.png" style="height: 130px; width: 130px"/>
-                        </li>
-                    </ul>
-                </section>
+                
+
+                <!-- Thêm nhiều mục rác nữa -->
                 <section class="drag-trash" style="width: 0px; height: 0px;">
                     <ul class="trash" style="width: 0px; height: 0px;">
                         <li style="padding-top: 500px; padding-left: 5px;">
-                            <img id="plate1" alt="plate1" src="game3/mirror.png"
-                                 style="height: 40px; width: 50px" data-garbageType="waste"/>
+                            <img id="plate1" class="falling"  alt="plate1" src="game3/mirror.png"
+                                 style="height: 40px; width: 50px" data-garbageType="waste"/> <!-- Hình ảnh của món rác -->
                         </li>
                     </ul>
                 </section>
+
+                <!-- Tiếp tục thêm các mục khác -->
                 <section class="drag-trash" style="width: 0px; height: 0px;">
                     <ul class="trash" style="width: 0px; height: 0px;">
                         <li style="padding-top: 470px; padding-left: 0px;">
-                            <img id="fish" alt="fish" src="game3/fish.png" 
-                                 style="height: 40px; width: 40px" data-garbageType="waste"/>
+                            <img id="fish" class="falling"  alt="fish" src="game3/fish.png" 
+                                 style="height: 40px; width: 40px" data-garbageType="waste"/> <!-- Hình ảnh cá -->
                         </li>
                     </ul>
                 </section>
-                <!-- <section class="drag-trash" style="width: 0px; height: 0px;">
-                    <ul class="trash" style="width: 0px; height: 0px;">
-                        <li style="padding-top: 470px; padding-left: 0px;">
-                            <img id="rock" alt="rock" src="cucda.jpg" 
-                                 style="height: 40px; width: 40px" data-garbageType="recycle"/>
-                        </li>
-                    </ul>
-                </section> -->
+
+                <!-- Các mục rác khác -->
                 <section class="drag-trash" style="width: 0px; height: 0px;">
                     <ul class="trash" style="width: 0px; height: 0px;">
                         <li style="padding-top: 530px; padding-left: 0px;">
-                            <img id="plate1" alt="plate1" src="game3/iron.png"
-                                 style="height: 40px; width: 50px" data-garbageType="recycle"/>
+                            <img id="plate1" class="falling" alt="plate1" src="game3/iron.png"
+                                 style="height: 40px; width: 50px" data-garbageType="recycle"/> <!-- Hình ảnh của sắt -->
                         </li>
                     </ul>
                 </section>
 
+                <!-- Các mục rác khác có thể tái chế -->
                 <section class="drag-trash" style="width: 0px; height: 0px;">
                     <ul class="trash" style="width: 0px; height: 0px;">
                         <li style="padding-top: 430px; padding-left: 0px" >
-                            <img id="bottle" alt="bottle" data-garbageType="recycle" 
-                                 src="game3/plastic bottle.png" style="height: 50px; width: 50px"/>
+                            <img id="bottle" class="falling" alt="bottle" data-garbageType="recycle" 
+                                 src="game3/plastic bottle.png" style="height: 50px; width: 50px"/> <!-- Hình ảnh chai nhựa -->
                         </li>
                     </ul>
                 </section>
+
+                <!-- Thêm nhiều mục rác tái chế -->
                 <section class="drag-trash" style="width: 0px; height: 0px;">
                     <ul class="trash" style="width: 0px; height: 0px;">
                         <li style="padding-top: 450px; padding-left: 10px">
-                            <img id="foodCan" data-garbageType="recycle" alt="foodCan" 
-                                 src="game3/foodCan.png" style="height: 50px; width: 40px">
+                            <img id="foodCan" class="falling" data-garbageType="recycle" alt="foodCan" 
+                                 src="game3/foodCan.png" style="height: 50px; width: 40px"> <!-- Hình ảnh hộp thực phẩm -->
                         </li>
                     </ul>
                 </section>
+
+                <!-- Hình ảnh giấy và các mục tái chế khác -->
+                            
                 <section class="drag-trash" style="width: 0px; height: 0px;">
                     <ul class="trash" style="width: 0px; height: 0px">
                         <li style="padding-top: 510px; padding-left: 10px">
-                            <img id="paper" alt="paper" src="game3/paper.png"  data-garbageType="recycle"
-                                 style="height: 40px; width: 40px">
+                            <img id="paper" class="falling" alt="paper" src="game3/paper.png" 
+                                 style="height: 60px; width: 60px" data-garbageType="recycle"> <!-- Hình ảnh giấy -->
                         </li>
                     </ul>
                 </section>
-                <section class="drag-trash" style="width: 0px; height: 0px;">
-                    <ul class="trash" style="width: 0px; height: 0px;">
-                        <li style="padding-top: 430px; padding-left:  -10px">
-                            <img id="banana" data-garbageType="waste" alt="banana" 
-                                 src="game3/shirt.png" style="height: 60px; width: 40px">
-                        </li>
-                    </ul>
-                </section>
-                <section class="drag-trash" style="width: 0px; height: 0px;">
-                    <ul class="trash" style="width: 0px; height: -10px;">
-                        <li style="padding-top: 500px; padding-left: 15px;">
-                            <img id="phone" alt="can" src="game3/phone.png" 
-                                 style="height: 60px; width: 40px" data-garbageType="waste"/>
-                        </li>
-                    </ul>
-                </section>
-                <section class="drag-trash" style="width: 0px; height: 0px;">
-                    <ul class="trash" style="width: 0px; height: 0px;">
-                        <li style="padding-top: 430px; padding-right: 10px">
-                            <img id="egg1" data-garbageType="waste" alt="banana" 
-                                 src="game3/egg1.png" style="height: 40px; width: 40px">
-                        </li>
-                    </ul>
-                </section>
-
-                <section  >
-                    <img id="girl" src="girl2.png" 
-                         style="height: 185px; width: 100px; margin-right:0px;margin-top: 400px;  "/>
-                </section>
-                <!--</div>-->
             </div>
         </form>
-    </body>
 
-    <!-- Nhúng iframe cho nhạc nền -->
-    <iframe id="audio-controls" src="audio.html" frameborder="0"></iframe>  
-    
-    <script type="text/javascript" src="game3.js"></script>
+        <!-- Nhúng iframe để hiển thị và điều khiển nhạc nền -->
+    <iframe id="audio-controls" src="audio.html" frameborder="0"></iframe>
+
+        <!-- Hành động JavaScript sẽ xử lý trò chơi, sự kiện drag & drop và xử lý điểm số -->
+        <script src="game3.js"></script> <!-- Liên kết với file JavaScript -->
+    </body>
 </html>

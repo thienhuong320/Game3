@@ -1,4 +1,3 @@
-<!-- audio.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nhạc Nền</title>
     <style>
+        /* Định dạng cho các nút điều khiển âm thanh */
         .audio-controls {
             position: absolute;
             top:  20px;
@@ -14,13 +14,14 @@
             gap: 20px;
         }
 
+        /* Định dạng cho các hình ảnh (icon) trong phần điều khiển âm thanh */
         .audio-controls img {
             width: 30px;
             height: 30px;
             cursor: pointer;
             z-index: 2;
         }
-            </style>
+    </style>
 </head>
 <body>
     <!-- Nhạc nền -->
@@ -28,18 +29,77 @@
     <!-- Âm thanh khi nhấn nút -->
     <audio id="button-sound" src="game3/mouse-click.mp3"></audio>
     <!-- Âm thanh khi thả rác đúng vào thùng -->
-     <audio id="correct-sound" src="game3/correct.mp3"></audio>
+    <audio id="correct-sound" src="game3/correct.mp3"></audio>
     <!-- Âm thanh khi thả rác sai vào thùng -->
-     <audio id="uncorrect-sound" src="game3/wrong.mp3"></audio>
+    <audio id="uncorrect-sound" src="game3/wrong.mp3"></audio>
 
     <!-- Icon điều khiển âm thanh -->
     <div class="audio-controls">
+        <!-- Nút bật âm thanh nút -->
         <img src="game3/speaker.png" alt="Bật âm thanh nút" id="toggle-button-sound-on" onclick="toggleButtonSound()" title="Bật âm thanh nút">
+        <!-- Nút tắt âm thanh nút -->
         <img src="game3/mute.png" alt="Tắt âm thanh nút" id="toggle-button-sound-off" onclick="toggleButtonSound()" title="Tắt âm thanh nút" style="display:none;">
+        <!-- Nút tắt nhạc nền -->
         <img src="game3/mutenhacnen-Photoroom.png" alt="Tắt nhạc nền" id="toggle-background-music-off" onclick="toggleBackgroundMusic()" title="Tắt nhạc nền">
+        <!-- Nút bật nhạc nền -->
         <img src="game3/nhacnen-Photoroom.png" alt="Bật nhạc nền" id="toggle-background-music-on" onclick="toggleBackgroundMusic()" title="Bật nhạc nền" style="display:none;">
     </div>
 
-     <script type="text/javascript" src="game3.js"></script>
+    <script>
+        // Biến lưu trạng thái bật/tắt âm thanh nút
+        let isButtonSoundOn = true;
+        // Biến lưu trạng thái bật/tắt nhạc nền
+        let isBackgroundMusicOn = true;
+
+        // Các đối tượng âm thanh
+        const bgMusic = document.getElementById("background-music"); // Đối tượng nhạc nền
+        const buttonSound = document.getElementById("button-sound"); // Đối tượng âm thanh của nút
+        const correctSound = document.getElementById("correct-sound"); // Đối tượng âm thanh cho câu trả lời đúng
+        const incorrectSound = document.getElementById("uncorrect-sound"); // Đối tượng âm thanh cho câu trả lời sai
+
+        // Tự động phát nhạc nền khi trang tải
+        window.onload = function () {
+            bgMusic.volume = 0.5;  // Thiết lập âm lượng nhạc nền
+            bgMusic.play();  // Phát nhạc nền khi tải trang
+        };
+
+        // Hàm bật/tắt âm thanh nút
+        function toggleButtonSound() {
+            isButtonSoundOn = !isButtonSoundOn; // Đảo ngược trạng thái âm thanh nút
+            const buttonSoundOn = document.getElementById("toggle-button-sound-on");
+            const buttonSoundOff = document.getElementById("toggle-button-sound-off");
+
+            // Thay đổi hiển thị các icon khi bật/tắt âm thanh nút
+            if (buttonSoundOn && buttonSoundOff) {
+                buttonSoundOn.style.display = isButtonSoundOn ? "block" : "none";
+                buttonSoundOff.style.display = isButtonSoundOn ? "none" : "block";
+            }
+
+            // Tạm dừng các âm thanh nếu âm thanh nút bị tắt
+            if (!isButtonSoundOn) {
+                buttonSound.pause();
+                correctSound.pause();
+                incorrectSound.pause();
+            }
+        }
+
+        // Hàm bật/tắt nhạc nền
+        function toggleBackgroundMusic() {
+            isBackgroundMusicOn = !isBackgroundMusicOn; // Đảo ngược trạng thái nhạc nền
+            if (isBackgroundMusicOn) {
+                bgMusic.play(); // Phát nhạc nền nếu bật
+            } else {
+                bgMusic.pause(); // Dừng nhạc nền nếu tắt
+            }
+            const backgroundMusicOn = document.getElementById("toggle-background-music-on");
+            const backgroundMusicOff = document.getElementById("toggle-background-music-off");
+
+            // Thay đổi hiển thị các icon khi bật/tắt nhạc nền
+            if (backgroundMusicOn && backgroundMusicOff) {
+                backgroundMusicOn.style.display = isBackgroundMusicOn ? "block" : "none";
+                backgroundMusicOff.style.display = isBackgroundMusicOn ? "none" : "block";
+            }
+        }
+    </script>
 </body>
 </html>
